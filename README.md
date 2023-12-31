@@ -13,7 +13,7 @@ docker run -it --rm fuzzgen-prepare-llvm
 
 # build all
 docker build . -t fuzzgen
-docker run -it --rm fuzzgen
+docker run -it -v $(pwd):/work --rm fuzzgen
 ```
 
 - fuzzgen llvm location: `LLVM_SRC=/llvm-project`
