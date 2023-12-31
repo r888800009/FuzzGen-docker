@@ -31,4 +31,5 @@ RUN cp -r /FuzzGen/src/preprocessor/ /llvm-project/clang/tools/fuzzgen/
 RUN echo 'add_clang_subdirectory(fuzzgen)' >> /llvm-project/clang/tools/CMakeLists.txt
 WORKDIR /llvm-project/
 FROM prepare-llvm AS build-llvm
-RUN mkdir build && cd build && PATH=$PATH:/usr/lib/llvm-6.0/bin cmake ../clang && make -j$(nproc)
+# we only need the fuzzgen-preprocessor, so ignore other error
+RUN mkdir build && cd build && PATH=$PATH:/usr/lib/llvm-6.0/bin cmake ../clang && (make -j$(nproc) || ls /llvm-project/build/bin/fuzzgen-preprocessor)
