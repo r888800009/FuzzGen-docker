@@ -16,4 +16,6 @@ docker build . -t fuzzgen
 docker run -it -v $(pwd):/work --rm fuzzgen
 ```
 
+note: use for android must patch `FuzzGen/src/compose.h` before build docker
+
 - fuzzgen llvm location: `LLVM_SRC=/llvm-project`
